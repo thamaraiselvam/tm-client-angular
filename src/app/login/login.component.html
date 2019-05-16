@@ -1,0 +1,21 @@
+<div class="login-container component">
+<mat-card style="color: rgba(0,0,0,.54);
+background: rgba(0,0,0,.03)">Login</mat-card>
+<mat-card>
+    <form class="example-form">
+    <mat-form-field >
+      <input matInput #emailInput placeholder="Email" [formControl]="email" required >
+      <mat-error *ngIf="email.invalid">{{getErrorMessage("email")}}</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field >
+      <input matInput #passwordInput  type="password" placeholder="Password" [formControl]="password" required >
+      <mat-error *ngIf="password.invalid">{{getErrorMessage("password")}}</mat-error>
+    </mat-form-field>
+    <br>
+    <a style="float:right; font-size:12px; color:#3f51b5" routerLink="/user/reset-password" >Forgot password?</a>
+    <br><br>
+    <button mat-raised-button (click)="login(emailInput.value, passwordInput.value)" color="primary">Login</button>
+  </form>
+</mat-card>
+</div>

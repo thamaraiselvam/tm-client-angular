@@ -1,0 +1,12 @@
+<div class="app-header">
+  <strong id="title">{{ title }}</strong>
+  <span class="homeLinks" *ngIf="!isAuthenticated">
+    <a mat-button routerLink="user/register">Register</a>
+    <a mat-button routerLink="user/login">Login</a>
+  </span>
+  <span class="homeLinks" *ngIf="isAuthenticated">
+    <a mat-button (click)="logout()">Logout</a>
+    <a mat-button routerLink="/user/profile/edit">Profile</a>
+    <a mat-button routerLink="/user/dashboard">Dashboard</a>
+    </span>
+</div>

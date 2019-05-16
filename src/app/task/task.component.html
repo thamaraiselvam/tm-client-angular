@@ -1,0 +1,44 @@
+<div class="login-container">
+    <mat-card style="color: rgba(0,0,0,.54);
+    background: rgba(0,0,0,.03)">
+    <span *ngIf="!isUpdate">New Task</span>
+    <span *ngIf="isUpdate">Update Task</span>
+  </mat-card>
+    <mat-card>
+        <form class="example-form">
+        <mat-form-field >
+          <input matInput #nameInput placeholder="Name" [formControl]="name" required >
+          <mat-error *ngIf="name.invalid">{{getErrorMessage("name")}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [matDatepicker]="startDate" #startDateInput  [formControl]="_startDate" placeholder="Start Date" required>
+          <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+          <mat-datepicker #startDate></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [matDatepicker]="endDate" #endDateInput placeholder="End Date" [formControl]="_endDate" name="start Date" required>
+          <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+          <mat-datepicker #endDate></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field >
+          <input matInput #estimatedHoursInput  type="number" placeholder="estimatedHours" [formControl]="estimatedHours" required >
+          <mat-error *ngIf="estimatedHours.invalid">{{getErrorMessage("estimatedHours")}}</mat-error>
+        </mat-form-field>
+        <mat-form-field >
+          <input matInput #actualHoursInput  type="number" placeholder="actualHours" [formControl]="actualHours" required >
+          <mat-error *ngIf="actualHours.invalid">{{getErrorMessage("actualHours")}}</mat-error>
+        </mat-form-field>
+        <mat-form-field *ngIf="isUpdate">
+            <mat-select  placeholder="Status"  [(value)]="selectedOption">
+                <mat-option value="open">Open</mat-option>
+                <mat-option value="close">Close</mat-option>
+            </mat-select>
+          </mat-form-field>
+        <mat-form-field >
+          <input matInput #attachmentsInput  type="text" placeholder="Others" >
+        </mat-form-field>
+        <button *ngIf="!isUpdate" mat-raised-button (click)="addTask(nameInput.value, startDateInput.value, endDateInput.value, estimatedHoursInput.value, actualHoursInput.value, attachmentsInput.value) " color="primary">Add</button>
+        <button *ngIf="isUpdate" mat-raised-button (click)="updateTask(nameInput.value, startDateInput.value, endDateInput.value, estimatedHoursInput.value, actualHoursInput.value, attachmentsInput.value) " color="primary">Update</button>
+      </form>
+    </mat-card>
+    </div>

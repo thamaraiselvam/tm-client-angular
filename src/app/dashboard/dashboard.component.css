@@ -1,0 +1,56 @@
+table {
+    width: 100%;
+  }
+.mat-cell{
+    padding: 0;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgba(0,0,0,.12)
+}
+.mat-header-cell{
+    text-align: left;
+}
+
+.button-row {
+    float: right;
+    padding-bottom: 30px
+}
+
+.button-row button, .button-row a {
+    margin-right: 15px;
+}
+
+#add-new-task{
+    float: left;
+}
+
+.mat-row{
+    height:48px
+}
+
+.mat-icon{
+    cursor: pointer;
+}
+
+.mat-form-field {
+    display: block;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.test{
+    padding-top: 48px;
+}
+
+td {
+    padding-top:10px !important;
+    padding-bottom:10px !important;
+  }
+
+  .mat-form-field{
+    width: 400px;
+    float: left;
+}

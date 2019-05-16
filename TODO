@@ -1,0 +1,69 @@
+
+Architecture :
+  ✔ Install dependancies
+  ✔ Design application structure
+
+Design :
+  ✔ Wireframe the layout and its flow
+  ✔ Design All layouts
+  ✔ Decide which UI package to used
+  ✔ Install and get the same UI
+
+Home component:
+  ✔ Welcome note
+  ✔ Buttons such as login and register
+  Actions :
+    ✔ Clicking login should redirect to login page
+    ✔ Clicking registration should redirect to registration page
+    ✔ If user already logged in then redirect to dashboard
+
+User component:
+  ✔ Login screen
+  Login Actions:
+    ✔ Design form
+    ✔ Validate email before submit
+    ✔ Make wait on login screen
+    ✔ after click throw error from API
+    ✔ else redirect to dashboard also save the user session
+
+  ✔ dashboard screen once logged in
+  Dashboard Actions:
+    ✔ List all tasks
+    ✔ Create task -> clicking will redirect to creation component
+    ✔ Search options and filter options , should reflect list area
+    ✔ edit -> clicking it will redirect to edit page component
+    ✔ delete -> clicking it will delete tasks and inform user
+    ✔ export -> clicking it will export current views tasks as PDF and download it directly.
+    ☐ import -> clicking will import tasks from csv file
+
+  ✔ header with profile and logout options
+  Header Actions:
+  ✔ Hide show Profile menu
+  ✔ Clicking profile page -> redirect to profile edit page ( reuse registraion component)
+  ✔ Clicking Logout should logout user (clear session from client and server)
+
+  ✔ Profile edits
+  Profile Actions:
+    ✔ Validate data on submit
+    ✔ throw errors if found any
+    ✔ Upload profile pic
+
+Task component:
+  ✔ Add task
+    ✔ Validate data
+    ✔ Calender to get start and enddate
+    ✔ throw error on view if got any
+  ✔ List tasks
+    ✔ List in list view with options like edit and delete
+  ✔ Update tasks
+  ✔ Delete tasks
+  ✔ Export tasks
+  
+  
+  Task component:
+    ✔ Register password data throw null value
+    ✔ regenrate ngfor list once data task get deleted
+    ✔ search tasks with search button
+    ✔ sort by dates using moment
+    ✔ code review (delete unwanted things and files)  
+    

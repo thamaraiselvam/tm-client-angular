@@ -1,0 +1,40 @@
+<div class="login-container">
+    <mat-card style="color: rgba(0,0,0,.54);
+    background: rgba(0,0,0,.03)">
+     <span *ngIf="!isUpdate">Registration</span>
+     <span *ngIf="isUpdate">Update Details</span>
+    </mat-card>
+    
+    <mat-card>
+        <form class="example-form">
+        <mat-form-field >
+          <input matInput [(ngModel)]="firstNameInput" placeholder="First name" [formControl]="firstName" required >
+          <mat-error *ngIf="firstName.invalid">{{getErrorMessage("firstName")}}</mat-error>
+        </mat-form-field>
+        <mat-form-field >
+          <input matInput [(ngModel)]="lastNameInput" placeholder="Last name" [formControl]="lastName" required >
+          <mat-error *ngIf="lastName.invalid">{{getErrorMessage("lastName")}}</mat-error>
+        </mat-form-field>
+        <mat-form-field >
+          <input matInput [(ngModel)]="emailInput" placeholder="Email" [formControl]="email" required >
+          <mat-error *ngIf="email.invalid">{{getErrorMessage("email")}}</mat-error>
+        </mat-form-field>
+        <mat-form-field  *ngIf="!isUpdate" >
+          <input matInput [(ngModel)]="passwordInput"  type="password" placeholder="password" [formControl]="password" required >
+          <mat-error><span *ngIf="password.invalid">{{getErrorMessage("password")}}</span></mat-error>
+        </mat-form-field>
+        <mat-form-field >
+          <input matInput [(ngModel)]="contactNumberInput" placeholder="Contact number" [formControl]="contactNumber" required >
+          <mat-error *ngIf="contactNumber.invalid">{{getErrorMessage("contactNumber")}}</mat-error>
+        </mat-form-field>
+        <div>
+            <input #file type="file" ng2FileSelect [uploader]="uploader" style="float: left;  margin-left: 30px;"  (change)="updateFile(file)" />
+            <span *ngIf="isUpdate && userInfo.picture"><img style="width: 50px;height: 50px;" src="{{userInfo.picture}}"></span>
+        </div>
+        <br>
+        <br>
+        <button *ngIf="!isUpdate" mat-raised-button (click)="register() " color="primary">Register</button>
+        <button *ngIf="isUpdate" mat-raised-button (click)="update()" color="primary">Update</button>
+      </form>
+    </mat-card>
+</div>

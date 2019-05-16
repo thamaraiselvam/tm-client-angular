@@ -1,0 +1,76 @@
+
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="component">
+  
+<div *ngIf="tasks.length > 1">
+    <mat-form-field>
+        <input matInput placeholder="Search" (keyup)="filterResults()"  [(ngModel)]="searchKeyword">
+    </mat-form-field>
+</div>
+<div class="button-row">
+    
+  <a  mat-button mat-raised-button color="primary" routerLink="/task/add" >Add New</a>
+  <button mat-raised-button color="primary" (click)="importCSV.click()"> Import CSV </button>
+    <input #importCSV name="file" ng2FileSelect [uploader]="uploader" type="file" (change)="importCSVFile()" hidden>
+     
+ 
+    <button mat-raised-button color="primary" (click)="exportCSV()"> Export CSV</button>
+  <button mat-raised-button color="primary" (click)="exportPDF()">Export PDF</button>
+</div>
+
+<br>
+
+<div *ngIf="sortedData.length < 1">
+    No Tasks Found.
+</div>
+
+<table *ngIf="sortedData.length > 0" matSort (matSortChange)="sortData($event)" >
+
+        <tr >
+            <ng-container matColumnDef="task">
+                <th mat-sort-header="name" mat-header-cell > Task </th>
+            </ng-container>
+            <!-- <th mat-sort-header="startDate">Start Date</th> -->
+            <!-- <th mat-sort-header="endDate">End Date</th> -->
+            <ng-container matColumnDef="Start Date">
+                <th mat-header-cell > Start Date </th>
+            </ng-container>
+            <ng-container matColumnDef="End Date">
+                <th mat-header-cell > End Date </th>
+            </ng-container>
+            <ng-container matColumnDef="End Date">
+                <th mat-header-cell mat-sort-header="estimatedHours">Estimated Hours</th>
+            </ng-container>
+            <ng-container matColumnDef="End Date">
+                <th mat-header-cell mat-sort-header="actualHours">Actual Hours</th> 
+            </ng-container>
+            <!-- <th mat-sort-header="created">Created</th>  -->
+            <!-- <th mat-sort-header="updated">Updated</th>  -->
+            <ng-container matColumnDef="Created">
+                <th mat-header-cell >Created</th> 
+            </ng-container>
+            <ng-container matColumnDef="Updated">
+                <th mat-header-cell >Updated</th> 
+            </ng-container>
+            <ng-container matColumnDef="Status">
+                <th mat-header-cell mat-sort-header="Status">Status</th> 
+            </ng-container>
+        </tr>
+    
+        <tr  *ngFor="let task of sortedData">
+            <td class="mat-cell" *ngIf="task && task._id">{{task.name}}</td>
+            <td class="mat-cell" *ngIf="task && task._id">{{task.startDate}}</td>
+            <td class="mat-cell" *ngIf="task && task._id">{{task.endDate}}</td>
+            <td class="mat-cell" *ngIf="task && task._id">{{task.estimatedHours}}</td>
+            <td class="mat-cell" *ngIf="task && task._id">{{task.actualHours}}</td>
+            <td class="mat-cell" *ngIf="task && task._id">{{task.createdAt}}</td>
+            <td class="mat-cell" *ngIf="task && task._id">{{task.updatedAt}}</td>
+            <td class="mat-cell" *ngIf="task && task._id">{{task.status}}</td>
+            <td class="mat-cell" *ngIf="task && task._id && task.status === 'open'" (click)="navigateEditTask(task._id)"><mat-icon>edit</mat-icon></td>
+            <td class="mat-cell" *ngIf="task && task._id && task.status === 'open'" (click)= "deleteTask(task._id)"><mat-icon>delete</mat-icon></td>
+        </tr>
+    </table>
+
+</div>
